@@ -47,6 +47,13 @@ public class TaskBroadcaster : MonoBehaviour
     {
         m_active = true;
         m_household.AddBroadcaster(this);
+
+        var renderer = GetComponentInChildren<Renderer>();
+        if (renderer)
+        {
+            renderer.material.SetColor("_EmissionColor", new Color(1.0f, 1.0f, 0.0f) * 0.5f);
+            renderer.material.EnableKeyword("_EMISSION");
+        }
     }
 
     public void Completed()
@@ -55,6 +62,13 @@ public class TaskBroadcaster : MonoBehaviour
         {
             m_active = false;
             m_household.RemoveBroadcaster(this);
+
+            var renderer = GetComponentInChildren<Renderer>();
+            if (renderer)
+            {
+                renderer.material.SetColor("_EmissionColor", new Color(0.0f, 0.0f, 0.0f));
+                renderer.material.EnableKeyword("_EMISSION");
+            }
         }
     }
 
