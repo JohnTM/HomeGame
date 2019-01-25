@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ContextAction), typeof(TaskBroadcaster))]
 public class Appliance : MonoBehaviour {
 
     void Start()
@@ -10,8 +11,13 @@ public class Appliance : MonoBehaviour {
 
         action.TriggerFilter = Filter;
         action.OnTrigger = Trigger;
+    
+    }
 
-        action.Reset(); 
+    public void Reset()
+    {
+        ContextAction action = GetComponent<ContextAction>();
+        action.Reset();
         GetComponent<TaskBroadcaster>().Activate();
     }
 
