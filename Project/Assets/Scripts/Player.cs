@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Image m_contextImage;
 
+    [SerializeField]
+    private Image m_progressImage;
+
     private Rigidbody m_rigidbody;
 
     private ContextAction m_closestAction;
@@ -166,17 +169,26 @@ public class Player : MonoBehaviour
                 ContextAction.TriggerPhase phase = m_closestAction.Trigger(this);
                 switch (phase)
                 {
-                    case ContextAction.TriggerPhase.Ended:
+                    case ContextAction.TriggerPhase.Ended:                        
+                        break;
+                    case ContextAction.TriggerPhase.Began:
+                        m_progressImage.fillAmount = 0;
                         break;
                     case ContextAction.TriggerPhase.InProgress:
-                        // TODO: progress indicator
+                        m_progressImage.fillAmount = m_closestAction.Progress;                
                         break;
                 }
             }
+            else
+            {
+                if (m_closestAction.Type == ContextAction.TriggerType.OverTime && m_closestAction.CurrentPhase == ContextAction.TriggerPhase.InProgress)
+                {
+                    m_closestAction.Reset();
+                    m_progressImage.fillAmount = m_closestAction.Progress;
+                }
+            }
         }
-
-       
-
+     
         CheckForContextActions();
     }
 
@@ -206,6 +218,7 @@ public class Player : MonoBehaviour
         {
             m_closestAction = minAction;
             m_contextImage.enabled = true;
+            m_progressImage.enabled = m_closestAction.Type == ContextAction.TriggerType.OverTime;
 
             Transform canvasT = m_contextImage.transform.parent;
             canvasT.position = minAction.transform.position + Vector3.up * minAction.Height;
@@ -218,6 +231,7 @@ public class Player : MonoBehaviour
         {
             m_closestAction = null;
             m_contextImage.enabled = false;
+            m_progressImage.enabled = false;
         }
 
     }

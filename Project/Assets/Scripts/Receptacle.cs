@@ -14,6 +14,7 @@ public class Receptacle : MonoBehaviour {
 
         action.TriggerFilter = Filter;
         action.OnTrigger = Trigger;
+        action.Reset();
     }
 
     public bool Filter(Player player)

@@ -60,7 +60,7 @@ public class ContextAction : MonoBehaviour {
     [SerializeField]
     private float m_duration;
 
-    private TriggerPhase m_currentPhase = TriggerPhase.Idle;
+    private TriggerPhase m_currentPhase = TriggerPhase.Ended;
     private float m_timer;
 
     public delegate bool TriggerFilterDelegate(Player player);
@@ -71,7 +71,7 @@ public class ContextAction : MonoBehaviour {
 
     public bool CanTrigger(Player player)
     {
-        if (TriggerFilter != null)
+        if (TriggerFilter != null && m_currentPhase != TriggerPhase.Ended)
         {
             return TriggerFilter(player);
         }
@@ -82,6 +82,11 @@ public class ContextAction : MonoBehaviour {
     {
         m_currentPhase = TriggerPhase.Idle;
         m_timer = 0;
+    }
+
+    public void Complete()
+    {
+        m_currentPhase = TriggerPhase.Ended;
     }
 
     public TriggerPhase Trigger(Player owner)
