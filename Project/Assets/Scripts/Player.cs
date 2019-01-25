@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using InControl;
 
 public class Player : MonoBehaviour
@@ -11,7 +12,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float m_moveSpeed = 1;
 
+    [SerializeField]
+    private Image m_contextImage;
+
     private Rigidbody m_rigidbody;
+
+    private ContextAction m_closestAction;
 
     public TwoAxisInputControl MovementControl
     {
@@ -54,6 +60,7 @@ public class Player : MonoBehaviour
 	void Start ()
     {
         m_rigidbody = GetComponent<Rigidbody>();
+        m_contextImage.transform.parent.parent = null;
 	}
 
     // Update is called once per frame
@@ -72,7 +79,48 @@ public class Player : MonoBehaviour
                 Vector2 dir = movement.Vector;
                 m_rigidbody.MovePosition(m_rigidbody.position + new Vector3(dir.x, 0, dir.y) * m_moveSpeed * Time.deltaTime);
             }
+        }
 
-        }         
+        CheckForContextActions();
+    }
+
+    private void CheckForContextActions()
+    {
+        Collider[] objects = Physics.OverlapSphere(transform.position, 1);
+        float minDist = float.PositiveInfinity;
+        ContextAction minAction = null;
+
+        foreach (Collider c in objects)
+        {
+            float dist = Vector3.Distance(c.gameObject.transform.position, transform.position);
+            if (minAction == null || dist < minDist)
+            {
+                ContextAction action = c.GetComponentInParent<ContextAction>();
+                if (action != null && action.isActiveAndEnabled)
+                {
+                    minAction = action;
+                }
+            }
+        }
+
+        if (minAction)
+        {
+            m_closestAction = minAction;
+            m_contextImage.enabled = true;
+
+            Transform canvasT = m_contextImage.transform.parent;
+            canvasT.position = minAction.transform.position + Vector3.up * 1.0f;
+
+            Vector3 camLook = (Camera.main.transform.position - canvasT.position).normalized;
+
+            m_contextImage.transform.parent.rotation = Quaternion.LookRotation(camLook);
+
+        }
+        else
+        {
+            m_closestAction = null;
+            m_contextImage.enabled = false;
+        }
+
     }
 }
