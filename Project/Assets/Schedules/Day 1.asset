@@ -14,11 +14,11 @@ MonoBehaviour:
   Envronment: {fileID: 11400000, guid: 93658c74b4d39844a80b459a80746987, type: 2}
   Events:
   - Type: 0
-    TimeOfDayStart: 1
-    TimeOfDayEnd: 23
+    TimeOfDayStart: 2
+    TimeOfDayEnd: 22
     EventChance: 1
-    InstanceChance: 0.125
-    TimesMin: 1
+    InstanceChance: 0.9
+    TimesMin: 8
     TimesMax: 10
   - Type: 6
     TimeOfDayStart: 1

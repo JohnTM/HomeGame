@@ -26,7 +26,10 @@ public class TaskListUI : MonoBehaviour {
         {
             TaskIcon icon = m_taskIconMap[tb];            
             m_taskIconMap.Remove(tb);
-            Destroy(icon.gameObject);
+            if (icon.gameObject)
+            {
+                Destroy(icon.gameObject);
+            }            
         }
     }
 

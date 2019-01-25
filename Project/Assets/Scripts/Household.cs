@@ -22,11 +22,19 @@ public class Household : MonoBehaviour
     private Text m_dayText;
 
     [SerializeField]
+    private Slider m_daySlider;
+
+    [SerializeField]
     private Transform m_trashPrefab;
 
     private List<TaskBroadcaster> m_broadcasters = new List<TaskBroadcaster>();
 
-    private Dictionary<ScheduleEvent, int> m_eventOccurances = new Dictionary<ScheduleEvent, int>();
+    private class EventDetail
+    {
+        public List<int> Ticks = new List<int>();
+    }
+
+    private Dictionary<ScheduleEvent, EventDetail> m_eventDetails = new Dictionary<ScheduleEvent, EventDetail>();
 
     public void AddBroadcaster(TaskBroadcaster tb)
     {
@@ -49,7 +57,42 @@ public class Household : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SetupSchedule(m_days[m_currentDay]);
+    }
 
+    void SetupSchedule(Schedule schedule)
+    {
+        m_eventDetails.Clear();
+        foreach (ScheduleEvent e in schedule.Events)
+        {
+            if (Random.value < e.EventChance)
+            {
+                EventDetail detail = new EventDetail();
+                m_eventDetails[e] = detail;
+
+                int count = Random.Range(e.TimesMin, e.TimesMax);
+
+                float startTime = e.TimeOfDayStart / 24.0f * schedule.Envronment.DayLength;
+                float endTime = e.TimeOfDayEnd / 24.0f * schedule.Envronment.DayLength;
+
+                for (int i = 0; i < count; i++)
+                {
+                    if (Random.value < e.InstanceChance)
+                    {
+                        float time = startTime + ((float)i / count) * (endTime - startTime);
+                        detail.Ticks.Add(TickForTime(time));
+                    }                    
+                }
+            }
+            
+            
+        }
+    }
+
+    int TickForTime(float time)
+    {
+        Schedule schedule = m_days[m_currentDay];
+        return (int)Mathf.Floor(time / schedule.Envronment.DayLength * 24.0f * 12.0f);
     }
 
     // Update is called once per frame
@@ -57,14 +100,14 @@ public class Household : MonoBehaviour
     {
         Schedule schedule = m_days[m_currentDay];
 
-        m_dayText.text = string.Format("DAY {0}", m_currentDay);
+        m_dayText.text = string.Format("DAY {0}", m_currentDay+1);
 
-        float m_prevTime = m_currentTime;
+        float prevTime = m_currentTime;
 
         m_currentTime += Time.deltaTime;
 
-        int prevMinute = (int)Mathf.Floor(m_prevTime / schedule.Envronment.DayLength * 24.0f * 12.0f);
-        int minute = (int)Mathf.Floor(m_currentTime / schedule.Envronment.DayLength * 24.0f * 12.0f);
+        int prevTick = TickForTime(prevTime);
+        int tick = TickForTime(m_currentTime);
         float normTime = m_currentTime / schedule.Envronment.DayLength * 24.0f;        
 
         float unitTime = m_currentTime / schedule.Envronment.DayLength;
@@ -72,36 +115,50 @@ public class Household : MonoBehaviour
         m_sun.intensity = schedule.Envronment.SunIntensity.Evaluate(unitTime);
         m_sun.color = schedule.Envronment.SunColor.Evaluate(unitTime);
 
-        if (prevMinute != minute)
+        m_daySlider.value = unitTime;
+
+        if (prevTick != tick)
         {
             // Minute tick has occurred, evaluate events
 
-            foreach (ScheduleEvent e in schedule.Events)
+            foreach(var pair in m_eventDetails)
             {
-                if (normTime >= e.TimeOfDayStart && normTime <= e.TimeOfDayEnd)
+                foreach(int eventTick in pair.Value.Ticks)
                 {
-                    int count = 0;
-                    if (!m_eventOccurances.TryGetValue(e, out count))
+                    if (eventTick == tick)
                     {
-                        m_eventOccurances[e] = 0;
-                    }
-
-                    if (count < e.TimesMax && Random.value < e.InstanceChance)
-                    {
-                        m_eventOccurances[e]++;
-                        SpawnEvent(e);
+                        SpawnEvent(pair.Key);
                     }
                 }
             }
+
+
+            //foreach (ScheduleEvent e in schedule.Events)
+            //{
+            //    if (normTime >= e.TimeOfDayStart && normTime <= e.TimeOfDayEnd)
+            //    {
+            //        int count = 0;
+            //        if (!m_eventOccurances.TryGetValue(e, out count))
+            //        {
+            //            m_eventOccurances[e] = 0;
+            //        }
+
+            //        if (count < e.TimesMax && Random.value < e.InstanceChance)
+            //        {
+            //            m_eventOccurances[e]++;
+            //            SpawnEvent(e);
+            //        }
+            //    }
+            //}
 
         }
 
         if (m_currentTime >= schedule.Envronment.DayLength)
         {
-            if (m_days.Length > m_currentDay + 1)
-            {
-                // TODO: Handle end of day
-            }
+            //if (m_days.Length > m_currentDay + 1)
+            //{
+            //    // TODO: Handle end of day
+            //}
             m_currentTime = schedule.Envronment.DayLength;
         }
 
