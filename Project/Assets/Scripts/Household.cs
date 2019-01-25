@@ -141,6 +141,6 @@ public class Household : MonoBehaviour
 
     public void RandomTrash()
     {
-        Instantiate<Transform>(m_trashPrefab, GetRandomLocation(), Quaternion.identity);
+        Instantiate<Transform>(m_trashPrefab, GetRandomLocation() + Vector3.up * 0.5f, Quaternion.identity);
     }
 }
