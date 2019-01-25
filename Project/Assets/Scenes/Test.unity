@@ -561,12 +561,6 @@ Prefab:
       propertyPath: m_Name
       value: PlayerA
       objectReference: {fileID: 0}
-    - target: {fileID: 114078775112990036, guid: 62df263f9987d0a40aaaea35d4a74b36,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3ecafb856e7e2f1418bce946ca6b51ef,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62df263f9987d0a40aaaea35d4a74b36, type: 2}
   m_IsPrefabAsset: 0
