@@ -13,11 +13,38 @@ public class Player : MonoBehaviour
     private float m_moveSpeed = 1;
 
     [SerializeField]
+    private Transform m_pickupPoint;
+
+    [SerializeField]
     private Image m_contextImage;
 
     private Rigidbody m_rigidbody;
 
     private ContextAction m_closestAction;
+
+    public InputControl ActionControl
+    {
+        get
+        {
+            if (InputManager.Devices.Count == 1)
+            {
+                if (m_playerIndex == 0)
+                {
+                    return InputManager.Devices[0].LeftTrigger;
+                }
+                else if (m_playerIndex == 1)
+                {
+                    return InputManager.Devices[0].RightTrigger;
+                }
+            }
+            else if (InputManager.Devices.Count > m_playerIndex)
+            {
+                return InputManager.Devices[m_playerIndex].Action1;
+            }
+            return null;
+        }
+    }
+
 
     public TwoAxisInputControl MovementControl
     {
@@ -56,6 +83,34 @@ public class Player : MonoBehaviour
         }
     }
 
+    public Item CurrentItem
+    {
+        get
+        {
+            return m_currentItem;
+        }
+
+        set
+        {
+            if (m_currentItem == null && value != null)
+            {
+                m_currentItem = value;
+                m_currentItem.transform.parent = m_pickupPoint;
+                m_currentItem.transform.localPosition = Vector3.zero;
+                m_currentItem.Pickup(this);
+            }
+
+            if (m_currentItem && value == null)
+            {
+                m_currentItem.transform.parent = null;
+                m_currentItem.Drop(this);
+                m_currentItem = null;
+            }
+        }
+    }
+
+    private Item m_currentItem;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -64,9 +119,43 @@ public class Player : MonoBehaviour
 	}
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         TwoAxisInputControl movement = MovementControl;
+        InputControl actionButton = ActionControl;
+
+        if (actionButton != null && m_closestAction)
+        {
+            bool shouldTrigger = false;
+
+            if (m_closestAction.Type == ContextAction.TriggerType.Instant)
+            {
+                if (actionButton.WasPressed)
+                {
+                    shouldTrigger = true;
+                }
+            }
+            else
+            {
+                if (actionButton.IsPressed)
+                {
+                    shouldTrigger = true;
+                }
+            }
+
+            if (shouldTrigger)
+            {
+                ContextAction.TriggerPhase phase = m_closestAction.Trigger(this);
+                switch (phase)
+                {
+                    case ContextAction.TriggerPhase.Ended:
+                        break;
+                    case ContextAction.TriggerPhase.InProgress:
+                        // TODO: progress indicator
+                        break;
+                }
+            }
+        }
 
         if (movement != null)
         {
@@ -103,7 +192,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (minAction)
+        if (minAction && minAction.CanTrigger(this))
         {
             m_closestAction = minAction;
             m_contextImage.enabled = true;
@@ -114,7 +203,6 @@ public class Player : MonoBehaviour
             Vector3 camLook = (Camera.main.transform.position - canvasT.position).normalized;
 
             m_contextImage.transform.parent.rotation = Quaternion.LookRotation(camLook);
-
         }
         else
         {
