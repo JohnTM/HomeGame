@@ -118,10 +118,28 @@ public class Player : MonoBehaviour
         m_contextImage.transform.parent.parent = null;
 	}
 
+    private void FixedUpdate()
+    {
+        TwoAxisInputControl movement = MovementControl;
+
+        if (movement != null)
+        {
+            // TODO: Handle movement
+            if (movement.Vector != Vector2.zero)
+            {
+                float angle = movement.Angle;
+                m_rigidbody.MoveRotation(Quaternion.Euler(0, 180 + angle, 0));
+
+                Vector2 dir = movement.Vector;
+                m_rigidbody.MovePosition(m_rigidbody.position + new Vector3(dir.x, 0, dir.y) * m_moveSpeed * Time.fixedDeltaTime);
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        TwoAxisInputControl movement = MovementControl;
+        
         InputControl actionButton = ActionControl;
 
         if (actionButton != null && m_closestAction)
@@ -157,18 +175,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (movement != null)
-        {
-            // TODO: Handle movement
-            if (movement.Vector != Vector2.zero)
-            {
-                float angle = movement.Angle;
-                m_rigidbody.MoveRotation(Quaternion.Euler(0, 180 + angle, 0));               
-
-                Vector2 dir = movement.Vector;
-                m_rigidbody.MovePosition(m_rigidbody.position + new Vector3(dir.x, 0, dir.y) * m_moveSpeed * Time.deltaTime);
-            }
-        }
+       
 
         CheckForContextActions();
     }
@@ -177,28 +184,31 @@ public class Player : MonoBehaviour
     {
         Collider[] objects = Physics.OverlapSphere(transform.position, 1);
         float minDist = float.PositiveInfinity;
+        int maxPriority = int.MinValue;
         ContextAction minAction = null;
 
         foreach (Collider c in objects)
         {
             float dist = Vector3.Distance(c.gameObject.transform.position, transform.position);
-            if (minAction == null || dist < minDist)
-            {
-                ContextAction action = c.GetComponentInParent<ContextAction>();
-                if (action != null && action.isActiveAndEnabled)
+            ContextAction action = c.GetComponentInParent<ContextAction>();
+
+            if (minAction == null || (action && dist < minDist && action.Priority >= maxPriority))
+            {                
+                if (action != null && action.isActiveAndEnabled && action.CanTrigger(this))
                 {
                     minAction = action;
+                    maxPriority = action.Priority;
                 }
             }
         }
 
-        if (minAction && minAction.CanTrigger(this))
+        if (minAction)
         {
             m_closestAction = minAction;
             m_contextImage.enabled = true;
 
             Transform canvasT = m_contextImage.transform.parent;
-            canvasT.position = minAction.transform.position + Vector3.up * 1.0f;
+            canvasT.position = minAction.transform.position + Vector3.up * minAction.Height;
 
             Vector3 camLook = (Camera.main.transform.position - canvasT.position).normalized;
 

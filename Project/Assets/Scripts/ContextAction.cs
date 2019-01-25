@@ -38,6 +38,20 @@ public class ContextAction : MonoBehaviour {
     [SerializeField]
     private TriggerType m_type = TriggerType.Instant;
 
+    [SerializeField]
+    private int m_priority;
+
+    public float Height;
+
+
+    public int Priority
+    {
+        get
+        {
+            return m_priority;
+        }
+    }
+
     public TriggerType Type
     {
         get { return m_type; }    
