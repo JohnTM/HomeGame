@@ -31,8 +31,6 @@ public class Item : MonoBehaviour {
             player.CurrentItem = this;
             GetComponent<ContextAction>().Reset();
         }
-
-        print(player.ToString() + " " + phase.ToString());
     }
 
     public void Pickup(Player player)

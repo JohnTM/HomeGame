@@ -26,6 +26,7 @@ public class Receptacle : MonoBehaviour {
         var item = player.CurrentItem;
         player.CurrentItem = null;
         Destroy(item.gameObject);
+        GetComponent<ContextAction>().Reset();
     }
 
     // Update is called once per frame
