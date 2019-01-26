@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_tags:
   - Trash
-  m_capacity: 1
+  m_capacity: 3
   m_byproduct: {fileID: 114911464541902218, guid: c379f6c80b32d954c910ccaa8e971ec9,
     type: 2}
 --- !u!114 &114119527475728564

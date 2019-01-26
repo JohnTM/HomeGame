@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 136664637435610776}
   - component: {fileID: 114064742199859820}
   - component: {fileID: 114670771115935246}
-  - component: {fileID: 114562301350622214}
   m_Layer: 0
   m_Name: Big Bin
   m_TagString: Untagged
@@ -102,21 +101,6 @@ MonoBehaviour:
   m_priority: 1
   Height: 1.5
   m_duration: 0
---- !u!114 &114562301350622214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1280479080044132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
 --- !u!114 &114670771115935246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,8 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_tags:
-  - task
-  m_capacity: 5
+  - GarbageBag
+  - Trash
+  m_capacity: 0
   m_byproduct: {fileID: 0}
 --- !u!136 &136664637435610776
 CapsuleCollider:

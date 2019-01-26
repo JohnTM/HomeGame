@@ -27,8 +27,6 @@ public class Task
 
 public class TaskBroadcaster : MonoBehaviour
 {
-
-
     [SerializeField]
     private bool m_activateOnLoad = false;
 
@@ -53,6 +51,11 @@ public class TaskBroadcaster : MonoBehaviour
 
     private Household m_household;
     private Highlighter m_highlighter;
+
+    public float TotalTime
+    {
+        get { return m_totalTime; }
+    }
 
     private float m_totalTime;
     private float m_punishTimer;

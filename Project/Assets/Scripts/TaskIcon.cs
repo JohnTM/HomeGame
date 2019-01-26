@@ -11,6 +11,12 @@ public class TaskIcon : MonoBehaviour {
     [SerializeField]
     private Text m_text;
 
+    [SerializeField]
+    private Image m_timerBar;
+
+    [HideInInspector]
+    public TaskBroadcaster TaskBroadcaster;
+    
     public Text Text
     {
         get
@@ -24,6 +30,14 @@ public class TaskIcon : MonoBehaviour {
         get
         {
             return m_image;
+        }
+    }
+
+    public Image TimerBar
+    {
+        get
+        {
+            return m_timerBar;
         }
     }
 

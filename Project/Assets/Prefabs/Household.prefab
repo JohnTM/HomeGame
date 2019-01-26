@@ -188,7 +188,6 @@ GameObject:
   - component: {fileID: 224643142047515328}
   - component: {fileID: 222649403766225660}
   - component: {fileID: 114249607410315076}
-  - component: {fileID: 114548411912705854}
   - component: {fileID: 114456789931826850}
   m_Layer: 5
   m_Name: TaskList
@@ -390,7 +389,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602145522076794}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -444,28 +443,6 @@ MonoBehaviour:
     type: 2}
   m_rewardTickPrefab: {fileID: 224394728674840208, guid: cfe957d0674669241a02afa1d30519e7,
     type: 2}
---- !u!114 &114548411912705854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1602145522076794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 5
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 3
-  m_Spacing: 5
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
 --- !u!114 &114562228795779282
 MonoBehaviour:
   m_ObjectHideFlags: 1

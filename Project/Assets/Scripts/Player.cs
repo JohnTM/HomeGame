@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Image m_progressImage;
 
+    [SerializeField]
+    private Sprite[] m_contextButtonSprites;
+
     private Rigidbody m_rigidbody;
 
     private ContextAction m_closestAction;
@@ -142,7 +145,23 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (InputManager.Devices.Count == 1)
+        {
+            if (m_playerIndex == 0)
+            {
+                m_contextImage.sprite = m_contextButtonSprites[0];
+            }
+            else if (m_playerIndex == 1)
+            {
+                m_contextImage.sprite = m_contextButtonSprites[1];
+            }
+        }
+        else if (InputManager.Devices.Count > m_playerIndex)
+        {
+            m_contextImage.sprite = m_contextButtonSprites[2];
+        }
+
+
         InputControl actionButton = ActionControl;
 
         if (actionButton != null && m_closestAction)
@@ -223,7 +242,7 @@ public class Player : MonoBehaviour
             Transform canvasT = m_contextImage.transform.parent;
             canvasT.position = minAction.transform.position + Vector3.up * minAction.Height;
 
-            Vector3 camLook = (Camera.main.transform.position - canvasT.position).normalized;
+            Vector3 camLook = -(Camera.main.transform.position - canvasT.position).normalized;
 
             m_contextImage.transform.parent.rotation = Quaternion.LookRotation(camLook);
         }
