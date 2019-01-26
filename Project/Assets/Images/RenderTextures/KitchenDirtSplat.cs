@@ -54,7 +54,7 @@ public class KitchenDirtSplat : MonoBehaviour
 
     public void Clean()
     {
-        m_timer -= Mathf.Max(Time.fixedDeltaTime * 100.0f, 0);
+        m_timer = Mathf.Max(m_timer - Time.fixedDeltaTime * 50.0f, 0);
 
         if (m_timer == 0 && m_tb.Active)
         {

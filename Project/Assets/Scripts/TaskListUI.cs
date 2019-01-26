@@ -25,6 +25,7 @@ public class TaskListUI : MonoBehaviour {
             TaskIcon icon = Instantiate<TaskIcon>(m_taskIconPrefab);
             icon.TaskBroadcaster = tb;
             icon.Text.text = tb.Task.Name;
+            icon.Image.sprite = tb.Task.Icon;
             icon.transform.SetParent(transform);
             icon.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(GetComponent<RectTransform>().rect.width, 0);
             m_taskIconMap.Add(tb, icon);
