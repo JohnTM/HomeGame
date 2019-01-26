@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Item : MonoBehaviour {
+
+    [SerializeField]
+    private UnityEvent m_onPickup;
+
+    [SerializeField]
+    private UnityEvent m_onDrop;
 
     private Player m_owner;
 
@@ -56,6 +63,8 @@ public class Item : MonoBehaviour {
             GetComponent<NavMeshAgent>().enabled = false;
         }
         m_owner = player;
+
+        m_onPickup.Invoke();
     }
 
     public void Drop(Player player)
@@ -71,6 +80,8 @@ public class Item : MonoBehaviour {
             GetComponent<NavMeshAgent>().enabled = true;
         }
         m_owner = null;
+
+        m_onDrop.Invoke();
     }
 
     // Update is called once per frame
