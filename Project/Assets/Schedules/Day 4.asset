@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd0243d5f465ed47b0faadb7c19353e, type: 3}
+  m_Name: Day 4
+  m_EditorClassIdentifier: 
+  Envronment: {fileID: 11400000, guid: 93658c74b4d39844a80b459a80746987, type: 2}
+  Events:
+  - Type: 0
+    TimeOfDayStart: 2
+    TimeOfDayEnd: 22
+    EventChance: 1
+    InstanceChance: 0.9
+    TimesMin: 8
+    TimesMax: 10
+  - Type: 6
+    TimeOfDayStart: 6
+    TimeOfDayEnd: 18
+    EventChance: 1
+    InstanceChance: 0.5
+    TimesMin: 2
+    TimesMax: 2
+  - Type: 5
+    TimeOfDayStart: 2
+    TimeOfDayEnd: 3
+    EventChance: 1
+    InstanceChance: 1
+    TimesMin: 1
+    TimesMax: 1

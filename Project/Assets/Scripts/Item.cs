@@ -7,6 +7,15 @@ public class Item : MonoBehaviour {
 
     private Player m_owner;
 
+    [SerializeField]
+    private Transform m_handle;
+
+    public Transform Handle
+    {
+        get { return m_handle;  }        
+    }
+
+
     // Use this for initialization
     void Start() {
         ContextAction action = GetComponent<ContextAction>();

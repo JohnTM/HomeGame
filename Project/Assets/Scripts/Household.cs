@@ -154,11 +154,13 @@ public class Household : MonoBehaviour
 
         if (m_currentTime >= schedule.Envronment.DayLength)
         {
-            //if (m_days.Length > m_currentDay + 1)
-            //{
-            //    // TODO: Handle end of day
-            //}
-            m_currentTime = schedule.Envronment.DayLength;
+            if (m_days.Length > m_currentDay + 1)
+            {
+                // TODO: Handle end of day
+                m_currentDay++;
+                SetupSchedule(m_days[m_currentDay]);
+                m_currentTime = 0;
+            }            
         }
 
         // TODO: Change sun light based on env settings

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 
 public enum TaskPriority
@@ -27,6 +29,12 @@ public class Task
 
 public class TaskBroadcaster : MonoBehaviour
 {
+    [SerializeField]
+    private UnityEvent m_onActivate;
+
+    [SerializeField]
+    private UnityEvent m_onCompleted;
+
     [SerializeField]
     private bool m_activateOnLoad = false;
 
@@ -71,6 +79,8 @@ public class TaskBroadcaster : MonoBehaviour
         {
             m_highlighter.Show = true;
         }
+
+        m_onActivate.Invoke();
     }
 
     public void Completed()
@@ -85,6 +95,8 @@ public class TaskBroadcaster : MonoBehaviour
             {
                 m_highlighter.Show = false;
             }
+
+            m_onCompleted.Invoke();
         }
     }
 

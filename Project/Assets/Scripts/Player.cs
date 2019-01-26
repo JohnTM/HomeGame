@@ -103,6 +103,13 @@ public class Player : MonoBehaviour
                 m_currentItem = value;
                 m_currentItem.transform.parent = m_pickupPoint;
                 m_currentItem.transform.localPosition = Vector3.zero;
+
+                if (m_currentItem.Handle)
+                {
+                    m_currentItem.transform.localPosition = -m_currentItem.Handle.localPosition;
+                }
+
+                m_currentItem.transform.localRotation = Quaternion.identity;
                 m_currentItem.Pickup(this);
             }
 
