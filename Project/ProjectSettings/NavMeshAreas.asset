@@ -11,15 +11,15 @@ NavMeshProjectSettings:
     cost: 1
   - name: Jump
     cost: 2
-  - name: 
+  - name: OutdoorsGrass
     cost: 1
-  - name: 
+  - name: IndoorsWood
     cost: 1
-  - name: 
+  - name: IndoorsCarpet
     cost: 1
-  - name: 
+  - name: IndoorsTile
     cost: 1
-  - name: 
+  - name: OutdoorsPaved
     cost: 1
   - name: 
     cost: 1
