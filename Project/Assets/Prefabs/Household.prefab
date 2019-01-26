@@ -539,6 +539,8 @@ MonoBehaviour:
   m_daySlider: {fileID: 114670156006044294}
   m_trashPrefab: {fileID: 4274372806748354, guid: 1b8ccfa450821e447aab07abd5e4efee,
     type: 2}
+  m_laundryPrefab: {fileID: 4892856516730672, guid: a61cc06ed516ec641a77c84c3b17d569,
+    type: 2}
   m_babyPrefab: {fileID: 4921696648747398, guid: e4f8d92d0b8907c4297b0d365f6417e4,
     type: 2}
 --- !u!114 &114688839573151542

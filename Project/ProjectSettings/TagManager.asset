@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Trash
   - GarbageBag
+  - Laundry
+  - LaundryBasket
+  - WashedLaundry
+  - DryLaundry
   layers:
   - Default
   - TransparentFX
