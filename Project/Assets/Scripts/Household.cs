@@ -10,6 +10,7 @@ public class Household : MonoBehaviour
     [SerializeField]
     private Schedule[] m_days;
 
+    [SerializeField]
     private int m_currentDay;
     private float m_currentTime;
 
@@ -30,6 +31,9 @@ public class Household : MonoBehaviour
 
     [SerializeField]
     private Transform m_trashPrefab;
+
+    [SerializeField]
+    private Transform m_laundryPrefab;
 
     [SerializeField]
     private Transform m_babyPrefab;
@@ -178,6 +182,7 @@ public class Household : MonoBehaviour
             case ScheduleEventType.DirtyDishes: DirtyDishes(); break;
             case ScheduleEventType.AddBaby: AddBaby(); break;
             case ScheduleEventType.GrowLawn: GrowLawn(); break;
+            case ScheduleEventType.RandomLaundry: RandomLaundry(); break;
         }
     }    
 
@@ -221,8 +226,14 @@ public class Household : MonoBehaviour
 
     public void RandomTrash()
     {
-        Vector3 pos = GetRandomLocation(NavMeshMask("IndoorsCarpet")) + Vector3.up * 0.5f;
+        Vector3 pos = GetRandomLocation(NavMeshMask("IndoorsCarpet", "IndoorsWood")) + Vector3.up * 0.5f;
         Instantiate<Transform>(m_trashPrefab, pos, Quaternion.identity);
+    }
+
+    public void RandomLaundry()
+    {
+        Vector3 pos = GetRandomLocation(NavMeshMask("IndoorsCarpet")) + Vector3.up * 0.5f;
+        Instantiate<Transform>(m_laundryPrefab, pos, Quaternion.identity);
     }
 
     public void AddBaby()

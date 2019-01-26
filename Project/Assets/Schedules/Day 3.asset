@@ -34,3 +34,10 @@ MonoBehaviour:
     InstanceChance: 1
     TimesMin: 1
     TimesMax: 1
+  - Type: 1
+    TimeOfDayStart: 4
+    TimeOfDayEnd: 14
+    EventChance: 1
+    InstanceChance: 1
+    TimesMin: 5
+    TimesMax: 5
