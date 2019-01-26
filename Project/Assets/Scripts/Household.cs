@@ -177,16 +177,35 @@ public class Household : MonoBehaviour
         }
     }    
 
-    Vector3 GetRandomLocation(int mask)
+    public int NavMeshMask(params string[] names)
+    {
+        int mask = 0;
+        foreach (string n in names)
+        {
+            mask |= (1 << NavMesh.GetAreaFromName(n));
+        }
+
+        return mask;
+    }
+
+    Vector3 GetRandomLocation(int mask = 0)
     {
         NavMeshTriangulation navMeshData = NavMesh.CalculateTriangulation();
 
-        // Pick the first indice of a random triangle in the nav mesh
-        int t = Random.Range(0, navMeshData.indices.Length - 3);        
+        int[] areas = navMeshData.areas;
+
+        int t = Random.Range(0, navMeshData.indices.Length/3);
+        if (mask != 0)
+        {
+            while (((1 << areas[t]) & mask) == 0)
+            {
+                t = Random.Range(0, navMeshData.indices.Length/3);
+            }
+        }
 
         // Select a random point on it
-        Vector3 point = Vector3.Lerp(navMeshData.vertices[navMeshData.indices[t]], navMeshData.vertices[navMeshData.indices[t + 1]], Random.value);
-        Vector3.Lerp(point, navMeshData.vertices[navMeshData.indices[t + 2]], Random.value);
+        Vector3 point = Vector3.Lerp(navMeshData.vertices[navMeshData.indices[t*3]], navMeshData.vertices[navMeshData.indices[t*3 + 1]], Random.value);
+        Vector3.Lerp(point, navMeshData.vertices[navMeshData.indices[t*3 + 2]], Random.value);
 
         return point;
     }
@@ -198,12 +217,14 @@ public class Household : MonoBehaviour
 
     public void RandomTrash()
     {
-        Instantiate<Transform>(m_trashPrefab, GetRandomLocation() + Vector3.up * 0.5f, Quaternion.identity);
+        Vector3 pos = GetRandomLocation(NavMeshMask("IndoorsCarpet")) + Vector3.up * 0.5f;
+        Instantiate<Transform>(m_trashPrefab, pos, Quaternion.identity);
     }
 
     public void AddBaby()
     {
-        Transform baby = Instantiate<Transform>(m_babyPrefab, GetRandomLocation() + Vector3.up * 1.0f, Quaternion.identity);
+        Vector3 pos = GetRandomLocation(NavMeshMask("IndoorsCarpet")) + Vector3.up * 0.5f;
+        Transform baby = Instantiate<Transform>(m_babyPrefab, pos, Quaternion.identity);
         baby.GetComponent<Baby>().Cry();
     }
 }
