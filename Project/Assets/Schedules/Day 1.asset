@@ -21,9 +21,9 @@ MonoBehaviour:
     TimesMin: 8
     TimesMax: 10
   - Type: 6
-    TimeOfDayStart: 1
-    TimeOfDayEnd: 23
+    TimeOfDayStart: 6
+    TimeOfDayEnd: 18
     EventChance: 1
-    InstanceChance: 0.25
-    TimesMin: 1
-    TimesMax: 1
+    InstanceChance: 0.5
+    TimesMin: 2
+    TimesMax: 2

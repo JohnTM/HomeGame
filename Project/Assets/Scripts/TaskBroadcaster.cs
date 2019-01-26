@@ -18,7 +18,10 @@ public class Task
     public TaskPriority Priority;
     public bool Grouped;
     public int GroupThreshold;
-    public float MaxDuration;
+    public float PunishAmount = 1;
+    public float PunishRate = 0.5f;
+    public float PunishTime = 30.0f;
+    public float PunishMultiplier = 2.0f;
 }
 
 public class TaskBroadcaster : MonoBehaviour
@@ -42,17 +45,21 @@ public class TaskBroadcaster : MonoBehaviour
     }
 
     private Household m_household;
+    private Highlighter m_highlighter;
+
+    private float m_totalTime;
+    private float m_punishTimer;
 
     public void Activate()
     {
         m_active = true;
+        m_totalTime = 0;
+        m_punishTimer = 0;
         m_household.AddBroadcaster(this);
 
-        var renderer = GetComponentInChildren<Renderer>();
-        if (renderer)
+        if (m_highlighter)
         {
-            renderer.material.SetColor("_EmissionColor", new Color(1.0f, 1.0f, 0.0f) * 0.5f);
-            renderer.material.EnableKeyword("_EMISSION");
+            m_highlighter.Show = true;
         }
     }
 
@@ -63,11 +70,9 @@ public class TaskBroadcaster : MonoBehaviour
             m_active = false;
             m_household.RemoveBroadcaster(this);
 
-            var renderer = GetComponentInChildren<Renderer>();
-            if (renderer)
+            if (m_highlighter)
             {
-                renderer.material.SetColor("_EmissionColor", new Color(0.0f, 0.0f, 0.0f));
-                renderer.material.EnableKeyword("_EMISSION");
+                m_highlighter.Show = false;
             }
         }
     }
@@ -76,12 +81,13 @@ public class TaskBroadcaster : MonoBehaviour
 	void Start ()
     {
         m_household = FindObjectOfType<Household>();
+        m_highlighter = GetComponent<Highlighter>();
 
         if (m_activateOnLoad)
         {
             Activate();
         }
-	}
+    }
 
     void OnDestroy()
     {
@@ -91,6 +97,18 @@ public class TaskBroadcaster : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-		
+		if (m_active)
+        {
+            m_totalTime += Time.deltaTime;
+            m_punishTimer += Time.deltaTime;
+
+            float rate = m_totalTime < m_task.PunishTime ? m_task.PunishRate : m_task.PunishRate * m_task.PunishMultiplier;
+
+            if (m_punishTimer > 1.0f / rate)
+            {
+                m_punishTimer = 0.0f;
+                m_household.Punish(1, this);
+            }
+        }
 	}
 }

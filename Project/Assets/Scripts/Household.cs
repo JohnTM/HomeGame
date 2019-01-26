@@ -19,6 +19,9 @@ public class Household : MonoBehaviour
     private TaskListUI m_taskListUI;
 
     [SerializeField]
+    private EmotionalStateUI m_emotionalStateUI;
+
+    [SerializeField]
     private Text m_dayText;
 
     [SerializeField]
@@ -60,6 +63,16 @@ public class Household : MonoBehaviour
         SetupSchedule(m_days[m_currentDay]);
     }
 
+    public void Punish(int amount, TaskBroadcaster source)
+    {
+        m_taskListUI.SpawnPunishTick(source, m_emotionalStateUI);        
+    }
+
+    void Reward()
+    {
+
+    }
+
     void SetupSchedule(Schedule schedule)
     {
         m_eventDetails.Clear();
@@ -79,8 +92,9 @@ public class Household : MonoBehaviour
                 {
                     if (Random.value < e.InstanceChance)
                     {
-                        float time = startTime + ((float)i / count) * (endTime - startTime);
-                        detail.Ticks.Add(TickForTime(time));
+                        float timeA = startTime + ((float)i / count) * (endTime - startTime);
+                        float timeB = startTime + ((float)(i+1) / count) * (endTime - startTime);
+                        detail.Ticks.Add(TickForTime(Mathf.Lerp(timeA, timeB, Random.value)));
                     }                    
                 }
             }
