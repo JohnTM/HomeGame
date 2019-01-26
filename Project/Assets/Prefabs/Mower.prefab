@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114648742118130946}
   - component: {fileID: 64151113582152324}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 114320865196914454}
   - component: {fileID: 64272022655253094}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 114383202854771870}
   - component: {fileID: 64285868086500762}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 114038834998009158}
   - component: {fileID: 64950616154845268}
   m_Layer: 0
-  m_Name: Cylinder (2)
+  m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 114666729168474708}
   - component: {fileID: 64855294719236966}
   m_Layer: 0
-  m_Name: Cylinder (3)
+  m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1107534960173686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.6986694, y: 0.08105469, z: -0.89}
+  m_LocalPosition: {x: -3.69, y: 0.08105469, z: 3.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4003034744315550}
@@ -206,7 +206,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649062607820808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0.656}
+  m_LocalPosition: {x: 0, y: 2.234, z: 0.656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4007534621983098}
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 0
   m_priority: 0
-  Height: 0
+  Height: 2
   m_duration: 0
 --- !u!114 &114320865196914454
 MonoBehaviour:
@@ -8052,6 +8052,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363de3c1b6445f94f8e7b28774f62bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_body: {fileID: 4003034744315550}
+  m_clips:
+  - {fileID: 8300000, guid: b8bb8e2ec29af57419782209db171e7a, type: 3}
+  - {fileID: 8300000, guid: 76fe9e023ed3bed48bcd9075d119cddf, type: 3}
+  - {fileID: 8300000, guid: b91d0c58dd27369409c99c7653f872f6, type: 3}
 --- !u!114 &114383202854771870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10850,4 +10855,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9fc45b25bb4cd438fb3cf1cb39cc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_onPickup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114344781661785314}
+        m_MethodName: On
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_onDrop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114344781661785314}
+        m_MethodName: Off
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_handle: {fileID: 4479095429758124}

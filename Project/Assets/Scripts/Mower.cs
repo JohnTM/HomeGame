@@ -6,6 +6,9 @@ using DG.Tweening;
 public class Mower : MonoBehaviour {
 
     [SerializeField]
+    private Transform m_body;
+
+    [SerializeField]
     private AudioClip[] m_clips;
 
     private AudioSource m_audioSource1;
@@ -32,7 +35,9 @@ public class Mower : MonoBehaviour {
             m_turnOffSeq = null;
         }
 
-        m_turnOnSeq = DOTween.Sequence();
+        m_body.DOShakePosition(1.0f, 0.1f, 20, 90, false, false).SetLoops(-1);
+
+        m_turnOnSeq = DOTween.Sequence();        
         m_turnOnSeq.AppendCallback(() => 
         {
             m_audioSource1.volume = 1.0f;
@@ -50,6 +55,8 @@ public class Mower : MonoBehaviour {
 
     public void Off()
     {
+        m_body.DOKill();
+
         if (m_turnOnSeq != null)
         {
             m_turnOnSeq.Kill();

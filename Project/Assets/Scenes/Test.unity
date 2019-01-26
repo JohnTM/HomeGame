@@ -206,7 +206,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh19566
+  m_Name: pb_Mesh-699862
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -620,37 +620,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ed516d8aa01724780679479606fa7c, type: 2}
   m_IsPrefabAsset: 0
---- !u!84 &616421682
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1084
-  m_Height: 610
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &642968377
 Prefab:
   m_ObjectHideFlags: 0
@@ -702,7 +671,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh19514
+  m_Name: pb_Mesh-699886
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -857,7 +826,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh19542
+  m_Name: pb_Mesh-699874
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1053,7 +1022,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 864101082}
+  m_TargetTexture: {fileID: 1574165973}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -1081,7 +1050,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-28058
+  m_Name: pb_Mesh-699890
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1319,37 +1288,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32621fc650125734abe71c665c2ca1a5, type: 2}
   m_IsPrefabAsset: 0
---- !u!84 &864101082
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 1084
-  m_Height: 610
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 7
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &885643933 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1564746149941326, guid: fddcf0f1e297fcb4bbfc99087f2b38c2,
@@ -1755,6 +1693,7 @@ GameObject:
   - component: {fileID: 1079304796}
   - component: {fileID: 1079304795}
   - component: {fileID: 1079304798}
+  - component: {fileID: 1079304799}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1850,8 +1789,20 @@ MonoBehaviour:
   sourceCamera: {fileID: 1079304796}
   outlineCamera: {fileID: 744477478}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 864101082}
-  extraRenderTexture: {fileID: 616421682}
+  renderTexture: {fileID: 1574165973}
+  extraRenderTexture: {fileID: 1965810982}
+--- !u!114 &1079304799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1079304794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58f6cab847b1eb44afed63c16e5921d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_minCameraDistance: 10
 --- !u!1001 &1167323235
 Prefab:
   m_ObjectHideFlags: 0
@@ -2286,6 +2237,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c6cfaf1cebe994e90316311cfd93f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!84 &1574165973
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1084
+  m_Height: 610
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1687578364
 Prefab:
   m_ObjectHideFlags: 0
@@ -2491,7 +2473,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-28056
+  m_Name: pb_Mesh-699888
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2641,6 +2623,37 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!84 &1965810982
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 1084
+  m_Height: 610
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 7
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &2003073290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,15 +2828,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 332115524}
-    - target: {fileID: 114128026657056722, guid: afdea4da76567fd46b99d859c9ea852b,
-        type: 2}
-      propertyPath: Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479095429758124, guid: afdea4da76567fd46b99d859c9ea852b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.234
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afdea4da76567fd46b99d859c9ea852b, type: 2}
   m_IsPrefabAsset: 0
