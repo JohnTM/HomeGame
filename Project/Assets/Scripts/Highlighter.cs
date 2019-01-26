@@ -15,9 +15,12 @@ public class Highlighter : MonoBehaviour {
         {
             m_show = value;
 
-            foreach (var o in m_outlines)
+            if (m_outlines != null)
             {
-                o.enabled = m_show;
+                foreach (var o in m_outlines)
+                {
+                    o.enabled = m_show;
+                }
             }
         }
     }
@@ -28,20 +31,20 @@ public class Highlighter : MonoBehaviour {
 
     private void Awake()
     {
-        m_outlines = GetComponentsInChildren<cakeslice.Outline>();
-        foreach (var o in m_outlines)
-        {
-            o.enabled = false;
-        }
+
     }
 
     // Use this for initialization
     void Start () {
-        Show = false;
+        //Show = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        m_outlines = GetComponentsInChildren<cakeslice.Outline>();
+        foreach (var o in m_outlines)
+        {
+            o.enabled = m_show;
+        }
+    }
 }
