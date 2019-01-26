@@ -59,7 +59,6 @@ public class TaskListUI : MonoBehaviour {
                 ).OnComplete(() =>
                 {
                     emotionUI.Punish(1, tb);
-
                 });
             seq.Insert(0, punishTick.GetComponent<Image>().DOFillAmount(1.0f, 0.25f));
             Destroy(punishTick.gameObject, 1.0f);
