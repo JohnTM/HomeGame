@@ -28,18 +28,35 @@ public class EmotionalStateUI : MonoBehaviour
         image.sprite = m_sprites[(int)((m_currentScore / 100.0f) * (m_sprites.Length-1))];
 	}
 
+    public void Reward(int amount, TaskBroadcaster source)
+    {
+        m_currentScore = Mathf.Min(m_currentScore + amount, 100);        
+
+        var rt = GetComponent<RectTransform>();
+
+        if (m_currentTweener != null)
+        {
+            m_currentTweener.Kill(true);
+        }
+
+        DOTween.Kill(rt);
+        m_currentTweener = rt.DOPunchScale(new Vector3(0.1f, 0.1f, 0.1f),
+            0.7f).OnComplete(() => { });
+    }
+
     public void Punish(int amount, TaskBroadcaster source)
     {
         m_currentScore = Mathf.Max(m_currentScore - amount, 0);
-
-        //if (m_currentTweener != null)
-        //{
-        //    m_currentTweener.Complete();
-        //}
         
         var rt = GetComponent<RectTransform>();
-        Vector2 v = new Vector2(Random.Range(-10.0f, -3.0f), Random.Range(-5.0f, -2.0f));
-        m_currentTweener = rt.DOPunchAnchorPos(v,
-            0.7f).ChangeStartValue(m_startPos);
+        
+        if (m_currentTweener != null)
+        {
+            m_currentTweener.Kill(true);
+        }
+
+        Vector3 v = new Vector3(Random.Range(-10.0f, -3.0f), Random.Range(-5.0f, -2.0f), 0.0f);
+        m_currentTweener = rt.DOPunchPosition(v,
+            0.7f).OnComplete(() => { transform.position = m_startPos; });
     }
 }

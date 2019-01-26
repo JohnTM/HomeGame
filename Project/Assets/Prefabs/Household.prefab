@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 4867964953335438}
   - component: {fileID: 114597722854927906}
   - component: {fileID: 114688839573151542}
+  - component: {fileID: 114562228795779282}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -280,8 +281,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.10298395, g: 0, b: 1, a: 1}
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -441,6 +442,8 @@ MonoBehaviour:
     type: 2}
   m_punishTickPrefab: {fileID: 224394728674840208, guid: f007e7b454a9f5042953f16fa66b411a,
     type: 2}
+  m_rewardTickPrefab: {fileID: 224394728674840208, guid: cfe957d0674669241a02afa1d30519e7,
+    type: 2}
 --- !u!114 &114548411912705854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -463,6 +466,17 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &114562228795779282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354147018378754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1327945023, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114597722854927906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -519,7 +533,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -544,6 +558,8 @@ MonoBehaviour:
   m_dayText: {fileID: 114936397256440984}
   m_daySlider: {fileID: 114670156006044294}
   m_trashPrefab: {fileID: 4274372806748354, guid: 1b8ccfa450821e447aab07abd5e4efee,
+    type: 2}
+  m_babyPrefab: {fileID: 4921696648747398, guid: e4f8d92d0b8907c4297b0d365f6417e4,
     type: 2}
 --- !u!114 &114688839573151542
 MonoBehaviour:
@@ -670,7 +686,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 737574ac04a14bb4bb0a35a88cbac77e, type: 3}
+  m_Sprite: {fileID: 21300046, guid: 737574ac04a14bb4bb0a35a88cbac77e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -790,8 +806,8 @@ RectTransform:
   m_Father: {fileID: 224696394179274626}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -907,7 +923,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

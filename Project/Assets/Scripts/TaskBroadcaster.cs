@@ -22,6 +22,7 @@ public class Task
     public float PunishRate = 0.5f;
     public float PunishTime = 30.0f;
     public float PunishMultiplier = 2.0f;
+    public int Reward = 5;
 }
 
 public class TaskBroadcaster : MonoBehaviour
@@ -43,6 +44,12 @@ public class TaskBroadcaster : MonoBehaviour
             return m_task;
         }
     }
+
+    public bool Active
+    {
+        get { return m_active; }
+    }
+
 
     private Household m_household;
     private Highlighter m_highlighter;
@@ -68,7 +75,8 @@ public class TaskBroadcaster : MonoBehaviour
         if (m_active)
         {
             m_active = false;
-            m_household.RemoveBroadcaster(this);
+            m_household.Reward(m_task.Reward, this);
+            m_household.RemoveBroadcaster(this);            
 
             if (m_highlighter)
             {
@@ -77,12 +85,15 @@ public class TaskBroadcaster : MonoBehaviour
         }
     }
 
-	// Use this for initialization
-	void Start ()
+    private void Awake()
     {
         m_household = FindObjectOfType<Household>();
         m_highlighter = GetComponent<Highlighter>();
+    }
 
+    // Use this for initialization
+    void Start ()
+    {
         if (m_activateOnLoad)
         {
             Activate();

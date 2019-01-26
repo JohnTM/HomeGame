@@ -12,6 +12,9 @@ public class TaskListUI : MonoBehaviour {
     [SerializeField]
     private RectTransform m_punishTickPrefab;
 
+    [SerializeField]
+    private RectTransform m_rewardTickPrefab;
+
     private Dictionary<TaskBroadcaster, TaskIcon> m_taskIconMap = new Dictionary<TaskBroadcaster, TaskIcon>();
 
     public void BroadcasterAdded(TaskBroadcaster tb)
@@ -55,12 +58,35 @@ public class TaskListUI : MonoBehaviour {
 
             var seq = DOTween.Sequence();
 
-            seq.Append(punishTick.DOPath(path, 1.0f, PathType.CatmullRom).SetEase(Ease.InCubic)
-                ).OnComplete(() =>
-                {
-                    emotionUI.Punish(1, tb);
-                });
+            seq.Append(punishTick.DOPath(path, 1.0f, PathType.CatmullRom).SetEase(Ease.InCubic));
             seq.Insert(0, punishTick.GetComponent<Image>().DOFillAmount(1.0f, 0.25f));
+            seq.InsertCallback(0.9f, () => { emotionUI.Punish(1, tb); });
+            Destroy(punishTick.gameObject, 1.0f);
+        }
+
+        //m_emotionalStateUI.Punish(amount, source);
+    }
+
+    public void SpawnRewardTick(int amount, TaskBroadcaster tb, EmotionalStateUI emotionUI)
+    {
+        TaskIcon icon = m_taskIconMap[tb];
+        if (icon)
+        {
+            RectTransform punishTick = Instantiate<RectTransform>(m_rewardTickPrefab, transform.parent);
+            punishTick.position = icon.transform.position + Vector3.up * 30;
+
+            Vector3 start = punishTick.position;
+            Vector3 target = emotionUI.transform.position;
+            Vector3 dir = (start - target + Vector3.up * 20).normalized;
+            target += dir * 50.0f;
+
+            Vector3[] path = new Vector3[] { start, Vector3.Lerp(start, target, 0.5f) + Vector3.up * 30.0f, target };
+
+            var seq = DOTween.Sequence();
+
+            seq.Append(punishTick.DOPath(path, 1.0f, PathType.CatmullRom).SetEase(Ease.InCubic));
+            seq.Insert(0, punishTick.GetComponent<Image>().DOFillAmount(1.0f, 0.25f));
+            seq.InsertCallback(0.9f, () => { emotionUI.Reward(amount, tb); });
             Destroy(punishTick.gameObject, 1.0f);
         }
 

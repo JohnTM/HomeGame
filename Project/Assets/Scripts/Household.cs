@@ -30,6 +30,10 @@ public class Household : MonoBehaviour
     [SerializeField]
     private Transform m_trashPrefab;
 
+    [SerializeField]
+    private Transform m_babyPrefab;
+
+
     private List<TaskBroadcaster> m_broadcasters = new List<TaskBroadcaster>();
 
     private class EventDetail
@@ -68,9 +72,9 @@ public class Household : MonoBehaviour
         m_taskListUI.SpawnPunishTick(source, m_emotionalStateUI);        
     }
 
-    void Reward()
+    public void Reward(int amount, TaskBroadcaster source)
     {
-
+        m_taskListUI.SpawnRewardTick(amount, source, m_emotionalStateUI);
     }
 
     void SetupSchedule(Schedule schedule)
@@ -144,26 +148,7 @@ public class Household : MonoBehaviour
                         SpawnEvent(pair.Key);
                     }
                 }
-            }
-
-
-            //foreach (ScheduleEvent e in schedule.Events)
-            //{
-            //    if (normTime >= e.TimeOfDayStart && normTime <= e.TimeOfDayEnd)
-            //    {
-            //        int count = 0;
-            //        if (!m_eventOccurances.TryGetValue(e, out count))
-            //        {
-            //            m_eventOccurances[e] = 0;
-            //        }
-
-            //        if (count < e.TimesMax && Random.value < e.InstanceChance)
-            //        {
-            //            m_eventOccurances[e]++;
-            //            SpawnEvent(e);
-            //        }
-            //    }
-            //}
+            }        
 
         }
 
@@ -188,15 +173,16 @@ public class Household : MonoBehaviour
         {
             case ScheduleEventType.RandomTrash: RandomTrash(); break;
             case ScheduleEventType.DirtyDishes: DirtyDishes(); break;
+            case ScheduleEventType.AddBaby: AddBaby(); break;
         }
     }    
 
-    Vector3 GetRandomLocation()
+    Vector3 GetRandomLocation(int mask)
     {
         NavMeshTriangulation navMeshData = NavMesh.CalculateTriangulation();
 
         // Pick the first indice of a random triangle in the nav mesh
-        int t = Random.Range(0, navMeshData.indices.Length - 3);
+        int t = Random.Range(0, navMeshData.indices.Length - 3);        
 
         // Select a random point on it
         Vector3 point = Vector3.Lerp(navMeshData.vertices[navMeshData.indices[t]], navMeshData.vertices[navMeshData.indices[t + 1]], Random.value);
@@ -213,5 +199,11 @@ public class Household : MonoBehaviour
     public void RandomTrash()
     {
         Instantiate<Transform>(m_trashPrefab, GetRandomLocation() + Vector3.up * 0.5f, Quaternion.identity);
+    }
+
+    public void AddBaby()
+    {
+        Transform baby = Instantiate<Transform>(m_babyPrefab, GetRandomLocation() + Vector3.up * 1.0f, Quaternion.identity);
+        baby.GetComponent<Baby>().Cry();
     }
 }

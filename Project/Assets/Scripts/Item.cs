@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Item : MonoBehaviour {
 
@@ -37,15 +38,29 @@ public class Item : MonoBehaviour {
     public void Pickup(Player player)
     {
         GetComponent<Collider>().enabled = true;
-        GetComponent<Rigidbody>().isKinematic = true;
+        if (GetComponent<Rigidbody>())
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+        }        
+        if (GetComponent<NavMeshAgent>())
+        {
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
         m_owner = player;
     }
 
     public void Drop(Player player)
     {
         GetComponent<Collider>().enabled = true;
-        GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().velocity = Vector3.up * 2.5f;
+        if (GetComponent<Rigidbody>())
+        {
+            GetComponent<Rigidbody>().isKinematic = false;
+            GetComponent<Rigidbody>().velocity = Vector3.up * 2.5f;
+        }
+        if (GetComponent<NavMeshAgent>())
+        {
+            GetComponent<NavMeshAgent>().enabled = true;
+        }
         m_owner = null;
     }
 

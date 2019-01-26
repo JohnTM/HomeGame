@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(cakeslice.Outline))]
 public class Highlighter : MonoBehaviour {
 
     public bool Show
@@ -27,12 +26,19 @@ public class Highlighter : MonoBehaviour {
 
     private cakeslice.Outline[] m_outlines;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
         m_outlines = GetComponentsInChildren<cakeslice.Outline>();
+        foreach (var o in m_outlines)
+        {
+            o.enabled = false;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         Show = false;
-        
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
