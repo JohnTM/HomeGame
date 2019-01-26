@@ -164,7 +164,11 @@ MonoBehaviour:
     Priority: 0
     Grouped: 1
     GroupThreshold: 5
-    MaxDuration: 60
+    PunishAmount: 1
+    PunishRate: 0.5
+    PunishTime: 30
+    PunishMultiplier: 2
+    Reward: 2
 --- !u!114 &114922804142053060
 MonoBehaviour:
   m_ObjectHideFlags: 1

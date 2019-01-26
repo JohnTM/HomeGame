@@ -212,7 +212,7 @@ MonoBehaviour:
     PunishRate: 0.5
     PunishTime: 30
     PunishMultiplier: 2
-    Reward: 5
+    Reward: 2
 --- !u!114 &114569071463984662
 MonoBehaviour:
   m_ObjectHideFlags: 1
