@@ -23,7 +23,7 @@ public class Grass : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_tb = GetComponent<TaskBroadcaster>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

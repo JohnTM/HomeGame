@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using System.Linq;
 
 public class Household : MonoBehaviour
 {
@@ -176,6 +177,7 @@ public class Household : MonoBehaviour
             case ScheduleEventType.RandomTrash: RandomTrash(); break;
             case ScheduleEventType.DirtyDishes: DirtyDishes(); break;
             case ScheduleEventType.AddBaby: AddBaby(); break;
+            case ScheduleEventType.GrowLawn: GrowLawn(); break;
         }
     }    
 
@@ -228,5 +230,15 @@ public class Household : MonoBehaviour
         Vector3 pos = GetRandomLocation(NavMeshMask("IndoorsCarpet")) + Vector3.up * 0.5f;
         Transform baby = Instantiate<Transform>(m_babyPrefab, pos, Quaternion.identity);
         baby.GetComponent<Baby>().Cry();
+    }
+
+    public void GrowLawn()
+    {
+        List<Grass> results = new List<Grass>();
+        UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects().ToList().ForEach(g => results.AddRange(g.GetComponentsInChildren<Grass>(true)));
+        foreach (Grass g in results)
+        {
+            g.enabled = true;
+        }
     }
 }
