@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 114055590904703648}
   - component: {fileID: 114381394087582232}
   - component: {fileID: 114528396911353758}
+  - component: {fileID: 114600562677390326}
   m_Layer: 10
   m_Name: Baby
   m_TagString: Untagged
@@ -625,6 +626,20 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
+--- !u!114 &114600562677390326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1888775291672778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d006454e9fc68c4fa56199cea11e1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioclips:
+  - {fileID: 8300000, guid: 4b13634f1b6a3c942b5901a19ceb94ac, type: 3}
+  vol: 0.9
 --- !u!114 &114656719137078988
 MonoBehaviour:
   m_ObjectHideFlags: 1
