@@ -16,6 +16,8 @@ public class Grass : MonoBehaviour {
     [SerializeField]
     private float m_growthTime = 90;
 
+    private float m_growthMultiplier;
+
     private float m_timer = 0;
 
     private TaskBroadcaster m_tb;
@@ -23,12 +25,13 @@ public class Grass : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         m_tb = GetComponent<TaskBroadcaster>();
+        m_growthMultiplier = Random.Range(0.8f, 1.2f);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        m_timer += Time.deltaTime * Random.Range(0.8f, 1.2f);
+        m_timer += Time.deltaTime * m_growthMultiplier;
         if (m_timer > m_growthTime && m_tb.Active == false)
         {
             m_timer = m_growthTime;
@@ -51,7 +54,7 @@ public class Grass : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Mower>())
+        if (m_tb && other.gameObject.GetComponent<Mower>())
         {
             Mow();
         }

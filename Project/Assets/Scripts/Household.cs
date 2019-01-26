@@ -229,7 +229,6 @@ public class Household : MonoBehaviour
     {
         Vector3 pos = GetRandomLocation(NavMeshMask("IndoorsCarpet")) + Vector3.up * 0.5f;
         Transform baby = Instantiate<Transform>(m_babyPrefab, pos, Quaternion.identity);
-        baby.GetComponent<Baby>().Cry();
     }
 
     public void GrowLawn()
