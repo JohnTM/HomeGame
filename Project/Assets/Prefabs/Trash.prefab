@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114922804142053060}
   - component: {fileID: 114871739240586452}
   - component: {fileID: 114080441168538562}
+  - component: {fileID: 114161785030206804}
   m_Layer: 10
   m_Name: Trash
   m_TagString: Trash
@@ -131,6 +132,24 @@ MonoBehaviour:
   eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
+--- !u!114 &114161785030206804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203013418675998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d006454e9fc68c4fa56199cea11e1f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioclips:
+  - {fileID: 8300000, guid: 0ef042d79ae799749aaf6f6d93fad876, type: 3}
+  - {fileID: 8300000, guid: a262c48bf5bd55148b96d8344584de95, type: 3}
+  - {fileID: 8300000, guid: dda14b688fc045547a07ff96fb3e80f9, type: 3}
+  - {fileID: 8300000, guid: be8990b863aae0a4b913b256703af1ce, type: 3}
+  - {fileID: 8300000, guid: f1e297a1fe0bd4740a476e5bd3379153, type: 3}
+  vol: 0.9
 --- !u!114 &114306900700677598
 MonoBehaviour:
   m_ObjectHideFlags: 1
