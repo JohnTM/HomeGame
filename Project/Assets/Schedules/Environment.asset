@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc351ff0676fee949bd6c11cbdc5e061, type: 3}
   m_Name: Environment
   m_EditorClassIdentifier: 
-  DayLength: 90
+  DayLength: 15
   SunColor:
     serializedVersion: 2
     key0: {r: 1, g: 0.6192194, b: 0.4575472, a: 1}
