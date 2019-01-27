@@ -19,6 +19,8 @@ public class LightsManager : MonoBehaviour {
         {
             lightBaseValues.Add(lights[i].intensity);
         }
+        //Debug.Log("Gi Update threshold is " + DynamicGI.updateThreshold);
+        DynamicGI.updateThreshold = 0;
 	}
 	
 	// Update is called once per frame
