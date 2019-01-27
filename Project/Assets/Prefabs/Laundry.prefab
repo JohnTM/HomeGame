@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54042022852841608}
   - component: {fileID: 114247020455750602}
   - component: {fileID: 114894714957638076}
+  - component: {fileID: 114354528250682174}
   - component: {fileID: 114179530795336270}
   - component: {fileID: 114207338731303234}
   - component: {fileID: 114284019262931574}
@@ -43,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821355934625720}
   m_LocalRotation: {x: -0, y: 0.2588186, z: -0, w: 0.965926}
-  m_LocalPosition: {x: -0.13, y: 0.111, z: -4.41}
+  m_LocalPosition: {x: -3.4533153, y: 0.00015878945, z: -1.5013773}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,7 +91,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821355934625720}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: f5c28489b2ea01b4291ad0c4241c205b, type: 3}
 --- !u!54 &54042022852841608
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -136,7 +137,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   m_onCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114354528250682174}
+        m_MethodName: PlayAudio
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_activateOnLoad: 1
@@ -199,6 +211,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: be8990b863aae0a4b913b256703af1ce, type: 3}
   - {fileID: 8300000, guid: f1e297a1fe0bd4740a476e5bd3379153, type: 3}
   vol: 0.9
+--- !u!114 &114354528250682174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821355934625720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239352b6eb4b7d54199fe864b7196a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip1: {fileID: 8300000, guid: 7550e45ad969b7845a603589185d7abc, type: 3}
+  clip2: {fileID: 8300000, guid: d7c67db0d50a7434595b7ca5f6a14245, type: 3}
+  clip3: {fileID: 8300000, guid: 6049206167ac9614687488f948798c26, type: 3}
+  clip4: {fileID: 0}
+  clip5: {fileID: 0}
 --- !u!114 &114894714957638076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,12 +240,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_onPickup:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114354528250682174}
+        m_MethodName: PlayAudio
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_onDrop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114354528250682174}
+        m_MethodName: PlayAudio
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_handle: {fileID: 0}
