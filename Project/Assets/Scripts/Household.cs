@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class Household : MonoBehaviour
 {
@@ -89,6 +90,11 @@ public class Household : MonoBehaviour
     void Start()
     {
         SetupSchedule(m_days[m_currentDay]);
+
+        if (!SceneManager.GetSceneByName("Menus").isLoaded)
+        {
+            SceneManager.LoadScene("Menus", LoadSceneMode.Additive);
+        }        
     }
 
     public void Punish(int amount, TaskBroadcaster source)
