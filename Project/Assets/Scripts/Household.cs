@@ -104,10 +104,10 @@ public class Household : MonoBehaviour
     {
         SetupSchedule(m_days[m_currentDay]);
 
-        if (!SceneManager.GetSceneByName("Menus").isLoaded)
+        /*if (!SceneManager.GetSceneByName("Menus").isLoaded)
         {
             SceneManager.LoadScene("Menus", LoadSceneMode.Additive);
-        }        
+        }       */ 
     }
 
     public void Punish(int amount, TaskBroadcaster source)
