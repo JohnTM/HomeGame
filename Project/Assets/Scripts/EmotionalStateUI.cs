@@ -2,10 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using DG.Tweening;
 
 public class EmotionalStateUI : MonoBehaviour
 {
+    public class OnDepressionEvent : UnityEvent<TaskBroadcaster> {}
+
+
+    [SerializeField]
+    private OnDepressionEvent m_onDepression = new OnDepressionEvent();
+
+    public OnDepressionEvent OnDepression
+    {
+        get
+        {
+            return m_onDepression;
+        }
+    }
+
 
     [SerializeField]
     private Sprite[] m_sprites;
@@ -28,8 +43,18 @@ public class EmotionalStateUI : MonoBehaviour
         image.sprite = m_sprites[(int)((m_currentScore / 100.0f) * (m_sprites.Length-1))];
 	}
 
+    public void Depressed(TaskBroadcaster source)
+    {
+        m_onDepression.Invoke(source);
+    }
+
     public void Reward(int amount, TaskBroadcaster source)
     {
+        if (m_currentScore == 0)
+        {
+            return;
+        }
+
         m_currentScore = Mathf.Min(m_currentScore + amount, 100);        
 
         var rt = GetComponent<RectTransform>();
@@ -45,9 +70,20 @@ public class EmotionalStateUI : MonoBehaviour
     }
 
     public void Punish(int amount, TaskBroadcaster source)
-    {
+    {        
+        if (m_currentScore == 0)
+        {
+            return;
+        }
+
+        if (m_currentScore > 0 && m_currentScore - amount <= 0)
+        {
+            Depressed(source);
+            return;
+        }
+
         m_currentScore = Mathf.Max(m_currentScore - amount, 0);
-        
+
         var rt = GetComponent<RectTransform>();
         
         if (m_currentTweener != null)

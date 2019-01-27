@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BlockoutScene004.unity
     guid: 7ced5ff4eaf0044418f3bb2e2fa1feb5
+  - enabled: 1
+    path: Assets/Scenes/Menus.unity
+    guid: 869fb132b89c5b64d9a8a813e1c6f1b6
   m_configObjects: {}

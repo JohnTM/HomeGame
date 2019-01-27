@@ -23,6 +23,16 @@ public class Household : MonoBehaviour
     [SerializeField]
     private EmotionalStateUI m_emotionalStateUI;
 
+    public EmotionalStateUI EmotionalState
+    {
+        get
+        {
+            return m_emotionalStateUI;
+        }
+    }
+
+
+
     [SerializeField]
     private Text m_dayText;
 

@@ -11,6 +11,9 @@ public class MainMenu : MonoBehaviour {
     private Transform m_howToPlayMenu;
 
     [SerializeField]
+    private Transform m_gameOverMenu;
+
+    [SerializeField]
     private Transform m_playButton;
 
     [SerializeField]
@@ -44,9 +47,12 @@ public class MainMenu : MonoBehaviour {
 
     public void CloseMenu()
     {
-        m_currentMenu.gameObject.SetActive(false);
-        m_currentMenu = null;
-        GainFocus();
+        if (m_currentMenu)
+        {
+            m_currentMenu.gameObject.SetActive(false);
+            m_currentMenu = null;
+            GainFocus();
+        }
     }
 	
     public void StartPressed()
@@ -54,6 +60,14 @@ public class MainMenu : MonoBehaviour {
         m_household.Paused = false;
         m_cameraFollow.Override = null;
         gameObject.SetActive(false);
+        m_household.EmotionalState.OnDepression.AddListener((TaskBroadcaster source) =>
+        {
+            m_household.Paused = true;
+            CloseMenu();
+
+            m_gameOverMenu.GetComponent<GameOverMenu>().Source = source;
+            OpenMenu(m_gameOverMenu);            
+        });
     }
 
     public void HowToPlayPressed()
