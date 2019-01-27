@@ -17,9 +17,12 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Vector3 m_maxCameraBounds;
 
+    public Transform Override;
 
     private Vector3 m_initialPosition;
+    private Quaternion m_initialRotation;
     private Vector3 m_cameraVelocity;
+    private float m_cameraAngularVelocity;
 
     private Player[] m_players;
 
@@ -28,7 +31,7 @@ public class CameraFollow : MonoBehaviour
     {
         m_players = FindObjectsOfType<Player>();
         m_initialPosition = transform.position;
-
+        m_initialRotation = transform.rotation;
     }
 	
 	// Update is called once per frame
@@ -50,9 +53,24 @@ public class CameraFollow : MonoBehaviour
         target.y = Mathf.Clamp(target.y, m_minCameraBounds.y, m_maxCameraBounds.y);
         target.z = Mathf.Clamp(target.z, m_minCameraBounds.z, m_maxCameraBounds.z);
 
+        Quaternion targetRotation = m_initialRotation;
 
-        transform.position = Vector3.SmoothDamp(transform.position, target, ref m_cameraVelocity, 0.5f);
+        if (Override)
+        {
+            target = Override.position;
+            targetRotation = Override.rotation;
+        }
 
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref m_cameraVelocity, 0.5f, 8*2, Time.unscaledDeltaTime);
 
+        // https://answers.unity.com/questions/390291/is-there-a-way-to-smoothdamp-a-lookat.html
+        var delta = Quaternion.Angle(transform.rotation, targetRotation);
+        if (delta > 0.0f)
+        {
+            var t = Mathf.SmoothDampAngle(delta, 0.0f, ref m_cameraAngularVelocity, 0.5f, 18*2, Time.unscaledDeltaTime);
+            t = 1.0f - t / delta;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, t);
+        }
+        
 	}
 }
