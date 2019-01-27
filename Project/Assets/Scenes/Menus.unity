@@ -1275,7 +1275,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GO BACK
+  m_Text: MENU
 --- !u!222 &590410744
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1459,7 +1459,7 @@ GameObject:
   - component: {fileID: 929515511}
   - component: {fileID: 929515510}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1481,7 +1481,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 9, y: -20}
-  m_SizeDelta: {x: 700, y: 150}
+  m_SizeDelta: {x: 1200, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &929515510
 MonoBehaviour:
@@ -1515,7 +1515,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HOW TO PLAY
+  m_Text: LIFE IS JUST TOO MUCH...
 --- !u!222 &929515511
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1967,7 +1967,7 @@ GameObject:
   - component: {fileID: 1348279235}
   - component: {fileID: 1348279234}
   m_Layer: 5
-  m_Name: GameOvert
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2569,7 +2569,7 @@ GameObject:
   - component: {fileID: 1569242981}
   - component: {fileID: 1569242980}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
