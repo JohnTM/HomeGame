@@ -38,6 +38,15 @@ public class Household : MonoBehaviour
     [SerializeField]
     private Transform m_babyPrefab;
 
+    public bool Paused
+    {
+        get { return Time.timeScale == 0.0f; }
+        set
+        {
+            Time.timeScale = value ? 0.0f : 1.0f;
+            m_emotionalStateUI.GetComponentInParent<Canvas>().enabled = !value;
+        }
+    }
 
     private List<TaskBroadcaster> m_broadcasters = new List<TaskBroadcaster>();
 
