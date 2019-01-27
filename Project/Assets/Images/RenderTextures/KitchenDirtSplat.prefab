@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114562904623789704}
   - component: {fileID: 114898110710922800}
   - component: {fileID: 65069873143647114}
+  - component: {fileID: 114658051314117102}
   m_Layer: 13
   m_Name: KitchenDirtSplat
   m_TagString: Untagged
@@ -53,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325315968644476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.628, y: -2.31, z: -1.095}
+  m_LocalPosition: {x: -1.941, y: -2.31, z: -2.798}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4846028702746040}
@@ -142,6 +143,22 @@ MonoBehaviour:
   m_minScale: 0
   m_maxScale: 6
   m_growthTime: 60
+--- !u!114 &114658051314117102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325315968644476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239352b6eb4b7d54199fe864b7196a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip1: {fileID: 8300000, guid: 34e957ae731a26b498126b0ceeb9487a, type: 3}
+  clip2: {fileID: 8300000, guid: c04ae6739b992f14099712fd84bd6fb2, type: 3}
+  clip3: {fileID: 0}
+  clip4: {fileID: 0}
+  clip5: {fileID: 0}
 --- !u!114 &114898110710922800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,12 +172,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_onActivate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114658051314117102}
+        m_MethodName: PlayAudio
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_onCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114658051314117102}
+        m_MethodName: PlayAudio
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_activateOnLoad: 0
