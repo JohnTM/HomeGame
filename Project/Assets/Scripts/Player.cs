@@ -220,17 +220,25 @@ public class Player : MonoBehaviour
 
     private void CheckForContextActions()
     {
+
         Collider[] objects = Physics.OverlapSphere(transform.position, 1);
         float minDist = float.PositiveInfinity;
         int maxPriority = int.MinValue;
         ContextAction minAction = null;
+
+        if (m_currentItem)
+        {
+            minAction = m_currentItem.GetComponent<ContextAction>();
+            minDist = 0;
+            maxPriority = minAction.Priority;
+        }
 
         foreach (Collider c in objects)
         {
             float dist = Vector3.Distance(c.gameObject.transform.position, transform.position);
             ContextAction action = c.GetComponentInParent<ContextAction>();
 
-            if (minAction == null || (action && dist < minDist && action.Priority >= maxPriority))
+            if (minAction == null || (action && (dist < minDist || action.Priority >= maxPriority)))
             {                
                 if (action != null && action.isActiveAndEnabled && action.CanTrigger(this))
                 {
@@ -239,6 +247,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+
 
         if (minAction)
         {

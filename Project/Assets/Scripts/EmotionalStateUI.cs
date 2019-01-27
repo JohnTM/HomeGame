@@ -21,9 +21,14 @@ public class EmotionalStateUI : MonoBehaviour
         }
     }
 
-
     [SerializeField]
     private Sprite[] m_sprites;
+
+    [SerializeField]
+    private Image m_fill;
+
+    [SerializeField]
+    private Gradient m_fillGradient;
 
     [SerializeField, Range(0, 100)]
     private int m_currentScore = 100;
@@ -40,7 +45,15 @@ public class EmotionalStateUI : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         Image image = GetComponent<Image>();
-        image.sprite = m_sprites[(int)((m_currentScore / 100.0f) * (m_sprites.Length-1))];
+
+        float t = (m_currentScore / 100.0f);
+
+        image.sprite = m_sprites[(int)(t * (m_sprites.Length-1))];
+
+        m_fill.fillAmount = t;
+        m_fill.color = Color.Lerp(Color.red, Color.green, t); // m_fillGradient.Evaluate(t);
+
+        m_fill.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
 	}
 
     public void Depressed(TaskBroadcaster source)

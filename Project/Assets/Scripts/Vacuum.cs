@@ -14,10 +14,13 @@ public class Vacuum : MonoBehaviour {
 
     private Sequence m_turnOnSeq;
 
+    private Vector3 m_bodyOrigin;
+
     // Use this for initialization
     void Start()
     {
         m_audioSource1 = gameObject.AddComponent<AudioSource>();
+        m_bodyOrigin = m_body.localPosition;
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class Vacuum : MonoBehaviour {
             m_turnOnSeq = null;
         }
 
-        m_body.DOShakePosition(1.0f, 0.1f, 20, 90, false, false).SetLoops(-1);
+        m_body.DOShakePosition(1.0f, 0.05f, 20, 90, false, false).SetLoops(-1);
 
         m_turnOnSeq = DOTween.Sequence();
         m_turnOnSeq.AppendCallback(() =>
@@ -58,5 +61,6 @@ public class Vacuum : MonoBehaviour {
         m_turnOnSeq = DOTween.Sequence();
         m_turnOnSeq.Append(m_audioSource1.DOFade(0.0f, 1.0f));
 
+        m_body.localPosition = m_bodyOrigin;
     }
 }
