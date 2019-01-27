@@ -891,7 +891,7 @@ MonoBehaviour:
   m_activateOnLoad: 0
   m_task:
     Name: Baby
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 3ead43f1d9f22ff4aacb414f00765326, type: 3}
     Priority: 2
     Grouped: 0
     GroupThreshold: 0

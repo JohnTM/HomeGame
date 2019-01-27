@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_activateOnLoad: 1
   m_task:
     Name: Hang Laundry
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: de1afe24a453c9148bb9e0a73e069a38, type: 3}
     Priority: 0
     Grouped: 0
     GroupThreshold: 0
