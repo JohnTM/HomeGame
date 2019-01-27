@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameOverMenu : MonoBehaviour {
 
@@ -22,21 +24,12 @@ public class GameOverMenu : MonoBehaviour {
         set
         {
             m_source = value;
-            m_depressionText.text = m_source.Task.Name;
+            m_depressionText.text = m_source.Task.Name.ToUpper();
+            m_depressionCamera.gameObject.SetActive(true);
         }
     }
 
     private TaskBroadcaster m_source;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-    private void OnEnable()
-    {
-        m_depressionCamera.gameObject.SetActive(true);
-    }
 
     // Update is called once per frame
     void Update () {
@@ -44,5 +37,10 @@ public class GameOverMenu : MonoBehaviour {
         {
             m_depressionCamera.position = m_source.transform.position - m_depressionCamera.forward * 2.0f + Random.insideUnitSphere * 0.01f;
         }
+    }
+
+    public void MenuPressed()
+    {
+        SceneManager.LoadScene(0);
     }
 }

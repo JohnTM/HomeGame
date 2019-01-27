@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114207338731303234}
   - component: {fileID: 114284019262931574}
   - component: {fileID: 114911601240943262}
+  - component: {fileID: 114388250959738944}
   m_Layer: 10
   m_Name: Laundry
   m_TagString: Laundry
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Renderer>k__BackingField: {fileID: 0}
   color: 0
   eraseRenderer: 0
   originalLayer: 0
@@ -227,6 +229,23 @@ MonoBehaviour:
   clip3: {fileID: 8300000, guid: 6049206167ac9614687488f948798c26, type: 3}
   clip4: {fileID: 0}
   clip5: {fileID: 0}
+--- !u!114 &114388250959738944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821355934625720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 4
+  outlineColor: {r: 1, g: 0.9096165, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!114 &114894714957638076
 MonoBehaviour:
   m_ObjectHideFlags: 1

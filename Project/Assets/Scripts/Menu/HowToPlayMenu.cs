@@ -5,11 +5,4 @@ using UnityEngine.EventSystems;
 
 public class HowToPlayMenu : MonoBehaviour {
 
-    [SerializeField]
-    private Transform m_goBackButton;
-    
-    private void OnEnable()
-    {
-        EventSystem.current.SetSelectedGameObject(m_goBackButton.gameObject);
-    }
 }

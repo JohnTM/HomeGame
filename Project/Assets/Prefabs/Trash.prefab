@@ -27,9 +27,9 @@ GameObject:
   - component: {fileID: 114922804142053060}
   - component: {fileID: 114438457292596036}
   - component: {fileID: 114871739240586452}
-  - component: {fileID: 114080441168538562}
   - component: {fileID: 114161785030206804}
   - component: {fileID: 114254231677490092}
+  - component: {fileID: 114281522865201614}
   m_Layer: 10
   m_Name: Trash
   m_TagString: Trash
@@ -121,21 +121,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114080441168538562
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1203013418675998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
 --- !u!114 &114161785030206804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +150,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c6cfaf1cebe994e90316311cfd93f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114281522865201614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203013418675998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 4
+  outlineColor: {r: 1, g: 0.9096165, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!114 &114306900700677598
 MonoBehaviour:
   m_ObjectHideFlags: 1
