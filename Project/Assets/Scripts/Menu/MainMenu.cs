@@ -14,6 +14,9 @@ public class MainMenu : MonoBehaviour {
     private Transform m_gameOverMenu;
 
     [SerializeField]
+    private Transform m_winMenu;
+
+    [SerializeField]
     private Transform m_playButton;
 
     [SerializeField]
@@ -67,6 +70,12 @@ public class MainMenu : MonoBehaviour {
 
             m_gameOverMenu.GetComponent<GameOverMenu>().Source = source;
             OpenMenu(m_gameOverMenu);            
+        });
+        m_household.OnScheduleComplete.AddListener(() =>
+        {
+            m_household.Paused = true;
+            CloseMenu();
+            OpenMenu(m_winMenu);
         });
     }
 

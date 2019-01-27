@@ -532,6 +532,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50b1b8ec1e86d764a9136c7e4f924db1, type: 2}
   - {fileID: 11400000, guid: 76a32f850186bd0418a8f44e408e074b, type: 2}
   - {fileID: 11400000, guid: 5ce7408b420f3f645ad830f77f47520d, type: 2}
+  - {fileID: 11400000, guid: 187cbe14070903f43ad140fb381a2f1c, type: 2}
+  - {fileID: 11400000, guid: 9e8bbd96278dfa644a75d9c12ffbbe05, type: 2}
+  - {fileID: 11400000, guid: 2322a3c1bac98ce4c9823b46ff71c3f5, type: 2}
+  m_currentDay: 0
   m_sun: {fileID: 108684018946681182}
   m_taskListUI: {fileID: 114456789931826850}
   m_emotionalStateUI: {fileID: 114868613466388628}

@@ -5,9 +5,22 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Household : MonoBehaviour
 {
+    [SerializeField]
+    private UnityEvent m_onScheduleComplete = new UnityEvent();
+
+    public UnityEvent OnScheduleComplete
+    {
+        get
+        {
+            return m_onScheduleComplete;
+        }
+    }
+
+
     [SerializeField]
     private Schedule[] m_days;
 
@@ -190,7 +203,12 @@ public class Household : MonoBehaviour
                 m_currentDay++;
                 SetupSchedule(m_days[m_currentDay]);
                 m_currentTime = 0;
-            }            
+            }        
+            else
+            {
+                // Finished!
+                m_onScheduleComplete.Invoke();
+            }
         }
 
         // TODO: Change sun light based on env settings
