@@ -14,6 +14,9 @@ public class UpdateEmissionGI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        RendererExtensions.UpdateGIMaterials(rend);
+        if (Time.time > 10f)
+        {
+            RendererExtensions.UpdateGIMaterials(rend);
+        }
 	}
 }
