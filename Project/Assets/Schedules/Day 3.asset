@@ -39,5 +39,5 @@ MonoBehaviour:
     TimeOfDayEnd: 14
     EventChance: 1
     InstanceChance: 1
-    TimesMin: 5
-    TimesMax: 5
+    TimesMin: 3
+    TimesMax: 3

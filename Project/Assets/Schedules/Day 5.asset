@@ -25,12 +25,12 @@ MonoBehaviour:
     TimeOfDayEnd: 18
     EventChance: 1
     InstanceChance: 0.5
-    TimesMin: 2
-    TimesMax: 2
-  - Type: 5
-    TimeOfDayStart: 2
-    TimeOfDayEnd: 3
+    TimesMin: 4
+    TimesMax: 4
+  - Type: 1
+    TimeOfDayStart: 4
+    TimeOfDayEnd: 14
     EventChance: 1
     InstanceChance: 1
-    TimesMin: 1
-    TimesMax: 1
+    TimesMin: 6
+    TimesMax: 6
