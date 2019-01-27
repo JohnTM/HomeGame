@@ -426,7 +426,7 @@ MonoBehaviour:
   m_activateOnLoad: 0
   m_task:
     Name: Empty Bin
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: cf35a9d93f038064ca099570ea5648e6, type: 3}
     Priority: 0
     Grouped: 0
     GroupThreshold: 0

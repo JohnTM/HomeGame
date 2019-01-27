@@ -550,7 +550,7 @@ MonoBehaviour:
   m_activateOnLoad: 1
   m_task:
     Name: Put Away
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: f353b5eab260e024b8c5318880a0d250, type: 3}
     Priority: 0
     Grouped: 0
     GroupThreshold: 0
