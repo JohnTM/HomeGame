@@ -51,9 +51,9 @@ public class EmotionalStateUI : MonoBehaviour
         image.sprite = m_sprites[(int)(t * (m_sprites.Length-1))];
 
         m_fill.fillAmount = t;
-        m_fill.color = Color.Lerp(Color.red, Color.green, t); // m_fillGradient.Evaluate(t);
-
+        m_fill.color = m_fillGradient.Evaluate(t);
         m_fill.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+       
 	}
 
     public void Depressed(TaskBroadcaster source)

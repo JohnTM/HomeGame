@@ -328,7 +328,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   m_tags:
   - Trash
-  m_capacity: 3
+  m_capacity: 5
   m_processingTime: 0
   m_byproduct: {fileID: 114911464541902218, guid: c379f6c80b32d954c910ccaa8e971ec9,
     type: 2}

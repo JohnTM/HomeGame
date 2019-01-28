@@ -54,7 +54,7 @@ public class KitchenDirtSplat : MonoBehaviour
 
     public void Clean()
     {
-        m_timer = Mathf.Max(m_timer - Time.fixedDeltaTime * 50.0f, 0);
+        m_timer = 0;
 
         if (m_timer == 0 && m_tb.Active)
         {
@@ -79,7 +79,7 @@ public class KitchenDirtSplat : MonoBehaviour
 
                 if (movement != null)
                 {
-                    Dirty(movement.Vector.magnitude * 10.0f);
+                    Dirty(movement.Vector.magnitude * 5.0f);
                 }
             }
             else if (other.gameObject.GetComponent<Baby>())

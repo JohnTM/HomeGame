@@ -24,6 +24,14 @@ public class Household : MonoBehaviour
     [SerializeField]
     private Schedule[] m_days;
 
+    public int CurrentDay
+    {
+        get
+        {
+            return m_currentDay;
+        }
+    }    
+
     [SerializeField]
     private int m_currentDay;
     private float m_currentTime;
@@ -73,6 +81,14 @@ public class Household : MonoBehaviour
     }
 
     private List<TaskBroadcaster> m_broadcasters = new List<TaskBroadcaster>();
+
+    [SerializeField]
+    private int m_clearBonus = 2;
+
+    [SerializeField]
+    private float m_clearBonusTickTime = 1;
+
+    private float m_clearBonusTimer;
 
     private class EventDetail
     {
@@ -208,6 +224,16 @@ public class Household : MonoBehaviour
             {
                 // Finished!
                 m_onScheduleComplete.Invoke();
+            }
+        }
+
+        if (m_broadcasters.Count == 0)
+        {
+            m_clearBonusTimer += Time.deltaTime;
+            if (m_clearBonusTimer > m_clearBonusTickTime)
+            {
+                m_clearBonusTimer = 0;
+                m_emotionalStateUI.Reward(m_clearBonus, null);
             }
         }
 

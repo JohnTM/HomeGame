@@ -213,4 +213,4 @@ MonoBehaviour:
     PunishRate: 0.1
     PunishTime: 30
     PunishMultiplier: 2
-    Reward: 1
+    Reward: 3

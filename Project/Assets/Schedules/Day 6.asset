@@ -17,16 +17,16 @@ MonoBehaviour:
     TimeOfDayStart: 2
     TimeOfDayEnd: 22
     EventChance: 1
-    InstanceChance: 0.9
-    TimesMin: 15
-    TimesMax: 20
+    InstanceChance: 1
+    TimesMin: 10
+    TimesMax: 15
   - Type: 6
     TimeOfDayStart: 6
     TimeOfDayEnd: 18
     EventChance: 1
     InstanceChance: 0.5
-    TimesMin: 5
-    TimesMax: 6
+    TimesMin: 6
+    TimesMax: 7
   - Type: 5
     TimeOfDayStart: 2
     TimeOfDayEnd: 3
@@ -39,5 +39,5 @@ MonoBehaviour:
     TimeOfDayEnd: 18
     EventChance: 1
     InstanceChance: 1
-    TimesMin: 9
-    TimesMax: 9
+    TimesMin: 5
+    TimesMax: 10

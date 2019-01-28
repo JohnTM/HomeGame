@@ -14,6 +14,9 @@ public class GameOverMenu : MonoBehaviour {
     [SerializeField]
     private Text m_depressionText;
 
+    [SerializeField]
+    private Text m_scoreText;
+
     public TaskBroadcaster Source
     {
         get
@@ -26,6 +29,7 @@ public class GameOverMenu : MonoBehaviour {
             m_source = value;
             m_depressionText.text = m_source.Task.Name.ToUpper();
             m_depressionCamera.gameObject.SetActive(true);
+            m_scoreText.text = string.Format("You lasted {0} days...", FindObjectOfType<Household>().CurrentDay + 1);
         }
     }
 

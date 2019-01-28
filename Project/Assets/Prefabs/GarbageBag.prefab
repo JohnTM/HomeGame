@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 114911464541902218}
   - component: {fileID: 114500414239283626}
   - component: {fileID: 54013631661893988}
-  - component: {fileID: 114569071463984662}
   - component: {fileID: 114219657765190794}
   - component: {fileID: 114703158105320050}
   - component: {fileID: 114778497077108518}
@@ -372,22 +371,7 @@ MonoBehaviour:
     PunishRate: 0.5
     PunishTime: 30
     PunishMultiplier: 2
-    Reward: 2
---- !u!114 &114569071463984662
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1843343773292052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
+    Reward: 6
 --- !u!114 &114703158105320050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -401,7 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 0
   m_priority: 0
-  Height: 0
+  Height: 1
   m_duration: 0
 --- !u!114 &114778497077108518
 MonoBehaviour:

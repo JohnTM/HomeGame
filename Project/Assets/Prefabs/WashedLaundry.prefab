@@ -1595,4 +1595,4 @@ MonoBehaviour:
     PunishRate: 0.1
     PunishTime: 30
     PunishMultiplier: 2
-    Reward: 5
+    Reward: 8

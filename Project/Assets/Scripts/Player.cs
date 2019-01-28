@@ -171,6 +171,8 @@ public class Player : MonoBehaviour
 
         InputControl actionButton = ActionControl;
 
+        CheckForContextActions();
+
         if (actionButton != null && m_closestAction)
         {
             bool shouldTrigger = false;
@@ -215,7 +217,7 @@ public class Player : MonoBehaviour
             }
         }
      
-        CheckForContextActions();
+        
     }
 
     private void CheckForContextActions()

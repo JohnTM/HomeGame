@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 114118834796820114}
   - component: {fileID: 114097703780444670}
   - component: {fileID: 114712756349455894}
-  - component: {fileID: 114017371806328186}
   m_Layer: 0
   m_Name: WashingMachine
   m_TagString: Untagged
@@ -534,21 +533,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114017371806328186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1085879070847742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
 --- !u!114 &114058501030895428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -932,7 +916,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   m_tags:
   - Laundry
-  m_capacity: 1
+  m_capacity: 5
   m_processingTime: 6.5
   m_byproduct: {fileID: 114142733037011490, guid: 9c318ef9c2fceba44a179cf4fb07afd4,
     type: 2}

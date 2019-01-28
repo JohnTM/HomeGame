@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Assertions;
 
 public class Item : MonoBehaviour {
 
@@ -22,14 +23,15 @@ public class Item : MonoBehaviour {
         get { return m_handle;  }        
     }
 
+    private ContextAction m_action;
 
     // Use this for initialization
     void Start() {
-        ContextAction action = GetComponent<ContextAction>();
+        m_action = GetComponent<ContextAction>();
 
-        action.TriggerFilter = Filter;
-        action.OnTrigger = Trigger;
-        action.Reset();
+        m_action.TriggerFilter = Filter;
+        m_action.OnTrigger = Trigger;
+        m_action.Reset();
     }
 
     public bool Filter(Player player)
@@ -42,13 +44,18 @@ public class Item : MonoBehaviour {
         if ((m_owner == player) && m_owner.CurrentItem == this)
         {
             player.CurrentItem = null;
-            GetComponent<ContextAction>().Reset();
         }
         else if (m_owner == null && player.CurrentItem == null)
         {
             player.CurrentItem = this;
-            GetComponent<ContextAction>().Reset();
         }
+
+        m_action.Reset();
+
+        if (m_action.CurrentPhase == ContextAction.TriggerPhase.Ended)
+        {
+            Debug.LogAssertionFormat("Item in invalid state! {0}", m_action.CurrentPhase);
+        }      
     }
 
     public void Pickup(Player player)
@@ -62,7 +69,7 @@ public class Item : MonoBehaviour {
         {
             GetComponent<NavMeshAgent>().enabled = false;
         }
-        m_owner = player;
+        m_owner = player;        
 
         m_onPickup.Invoke();
     }
@@ -83,9 +90,4 @@ public class Item : MonoBehaviour {
 
         m_onDrop.Invoke();
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

@@ -249,10 +249,10 @@ MonoBehaviour:
     Grouped: 1
     GroupThreshold: 5
     PunishAmount: 1
-    PunishRate: 0.5
+    PunishRate: 0.25
     PunishTime: 30
     PunishMultiplier: 2
-    Reward: 2
+    Reward: 4
 --- !u!114 &114922804142053060
 MonoBehaviour:
   m_ObjectHideFlags: 1
